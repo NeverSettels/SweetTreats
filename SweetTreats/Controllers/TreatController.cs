@@ -24,6 +24,8 @@ namespace SweetTreats.Controllers
     }
     public ActionResult Create()
     {
+      ViewBag.FlavorId = new SelectList(_db.Flavors, "FlavorId", "Name");
+      ViewBag.Flavors = _db.Flavors.ToList();
       return View();
     }
     [HttpPost]
