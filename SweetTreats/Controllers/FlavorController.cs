@@ -27,9 +27,9 @@ namespace SweetTreats.Controllers
       return View();
     }
     [HttpPost]
-    public ActionResult Create(Author author)
+    public ActionResult Create(Flavor flavor)
     {
-      _db.Authors.Add(author);
+      _db.Flavors.Add(Flavor);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
