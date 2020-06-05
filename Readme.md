@@ -1,6 +1,6 @@
 # C# Sweats and Treats
 
-#### _C#_ - _5/8/2020_
+#### _C#_ - _6/5/2020_
 
 #### _Eric Settels_
 
@@ -57,6 +57,6 @@ If you have any questions, comments, or concerns, feel free to contact the conte
 
 ## **License**
 
-Copyright (c) 2020 **C# Bakery**
+Copyright (c) 2020 **C# **
 
 ### **_MIT_**
