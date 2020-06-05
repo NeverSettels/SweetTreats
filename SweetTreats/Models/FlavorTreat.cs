@@ -1,6 +1,6 @@
-namespace Library.Models
+namespace SweetTreats.Models
 {
-  public class AuthorBook
+  public class FlavorTreat
   {
     public int FlavorTreatId { get; set; }
     public int FlavorId { get; set; }

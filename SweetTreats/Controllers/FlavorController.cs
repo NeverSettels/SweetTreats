@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using System.Linq;
-using Library.Models;
+using SweetTreats.Models;
 using System;
 
 namespace SweetTreats.Controllers
@@ -20,7 +20,7 @@ namespace SweetTreats.Controllers
     public ActionResult Index()
     {
       List<Flavor> model = _db.Flavors.ToList();
-      return View(model)
+      return View(model);
     }
   }
 }
