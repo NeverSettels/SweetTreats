@@ -4,10 +4,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Library.Models;
+using SweetTreats.Models;
 using Microsoft.AspNetCore.Identity;
 
-namespace Library
+namespace SweetTreats
 {
   public class Startup
   {
@@ -26,11 +26,11 @@ namespace Library
       services.AddMvc();
 
       services.AddEntityFrameworkMySql()
-        .AddDbContext<LibraryContext>(options => options
+        .AddDbContext<SweetTreatsContext>(options => options
         .UseMySql(Configuration["ConnectionStrings:DefaultConnection"]));
 
       services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<LibraryContext>()
+                .AddEntityFrameworkStores<SweetTreatsContext>()
                 .AddDefaultTokenProviders();
       services.Configure<IdentityOptions>(options =>
    {
