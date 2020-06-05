@@ -33,5 +33,13 @@ namespace SweetTreats.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+    public ActionResult Details(int id)
+    {
+      var thisFlavor = _db.Flavor
+      .Include(flavor => flavor.Treats)
+      .ThenInclude(join => join.Treat)
+      .FirstOrDefault(flavor => flavor.FlavorId == id);
+      return View(thisFlavor);
+    }
   }
 }
