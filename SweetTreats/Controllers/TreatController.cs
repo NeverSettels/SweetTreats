@@ -32,9 +32,7 @@ namespace SweetTreats.Controllers
     public ActionResult Create(Treat treat, int FlavorId)
     {
       _db.Treats.Add(treat);
-      _db.SaveChanges();
-      Treat foundTreat _db.Treats.FirstOrDefault(t=>(t.Name == treat.Name));
-      .db.FlavorTreat.Add(new FlavorTreat() {FlavorId = FlavorId, TreatId = foundTreat.TreatId});
+      .db.FlavorTreat.Add(new FlavorTreat() {FlavorId = FlavorId, TreatId = treat.TreatId});
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
