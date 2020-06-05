@@ -1,0 +1,19 @@
+@{
+  Layout = "_Layout";
+}
+
+@model SweetTreats.Models.Flavor;
+@using SweetTreats.Models;
+
+<h2>Details for: @Model.Name</h2>
+
+<ul>
+  @foreach (var join in Model.Treats)
+  {
+    <li>Treat: @Html.ActionLink($"{join.Treat.Title}", "Details", "Treats", new {id = join.Treat.TreatId})</li>
+  }
+</ul>
+
+@Html.ActionLink("Return to Author Index", "Index") | 
+@Html.ActionLink("Add a new Treat", "Create", "Treats") | 
+@Html.ActionLink("Return Home", "Index", "Home")
