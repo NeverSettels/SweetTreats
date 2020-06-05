@@ -22,5 +22,16 @@ namespace SweetTreats.Controllers
       List<Flavor> model = _db.Flavors.ToList();
       return View(model);
     }
+    public ActionResult Create()
+    {
+      return View();
+    }
+    [HttpPost]
+    public ActionResult Create(Author author)
+    {
+      _db.Authors.Add(author);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }
