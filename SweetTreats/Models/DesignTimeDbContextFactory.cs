@@ -3,24 +3,24 @@ using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using System.IO;
 
-namespace Library.Models
+namespace SweetTreats.Models
 {
-  public class LibraryContextFactory : IDesignTimeDbContextFactory<LibraryContext>
+  public class SweetTreatsContextFactory : IDesignTimeDbContextFactory<SweetTreatsContext>
   {
 
-    LibraryContext IDesignTimeDbContextFactory<LibraryContext>.CreateDbContext(string[] args)
+    SweetTreatsContext IDesignTimeDbContextFactory<SweetTreatsContext>.CreateDbContext(string[] args)
     {
       IConfigurationRoot configuration = new ConfigurationBuilder()
           .SetBasePath(Directory.GetCurrentDirectory())
           .AddJsonFile("appsettings.json")
           .Build();
 
-      var builder = new DbContextOptionsBuilder<LibraryContext>();
+      var builder = new DbContextOptionsBuilder<SweetTreatsContext>();
       var connectionString = configuration.GetConnectionString("DefaultConnection");
 
       builder.UseMySql(connectionString);
 
-      return new LibraryContext(builder.Options);
+      return new SweetTreatsContext(builder.Options);
     }
   }
 }
