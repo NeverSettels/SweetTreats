@@ -10,7 +10,7 @@
 }
 else
 {
-<h2>Add a book brah</h2>
+<h2>Add a the newest most delicious treat ever!</h2>
 
 @using(Html.BeginForm())
 {
@@ -20,8 +20,8 @@ else
    @Html.LabelFor(model=> model.Price)
   @Html.TextBoxFor(model =>model.Price)
   <br>
-  @Html.Label("What flavor is it")
-  @Html.DropDownList("AuthorId")
+  @Html.Label("What flavor is it?")
+  @Html.DropDownList("FlavorId")
   <br>
   <input type="submit" value="Add it!">
 }
