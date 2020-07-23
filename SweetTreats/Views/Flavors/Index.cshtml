@@ -1,25 +1,27 @@
 @{
   Layout = "_Layout";
 }
-@using SweetTreats.Models;
-@model List<SweetTreats.Models.Author>;
 
-<h1>All Authorsthe distinct flavors in this Bakery</h1>
+@using SweetTreats.Models
+@model IEnumerable<SweetTreats.Models.Flavor>
 
-<ul>
+<h1>Flavors for @User.Identity.Name</h1>
+<hr />
 
-@if (Model.Count == 0)
+@if (Model.Any())
 {
-  <h2>No authors have been added yet.</h2>
-}
-else {
-@foreach (Author author in Model)
+  @foreach (Flavor flavor in Model)
+  {
+    <div class="card1" style="width:50%;">
+      <div class="card-body">
+        <p>@Html.ActionLink($"{flavor.FlavorName}", "Details", new { id = flavor.FlavorId })</p>
+    </div>
+  </div>
+  }
+} 
+else
 {
-  <li>@Html.ActionLink($"{author.Name}", "Details", new { id = author.AuthorId}) </li>
-}
+  <h3>No flavors have been added yet!</h3>
 }
 
-</ul>
-
-<p>@Html.ActionLink("Add new Flavor", "Create")</p>
-<p>@Html.ActionLink("Return to Home", "Index", "Home")</p>
+<p class="btn btn-dark" id="new-flavor">@Html.ActionLink("Add new flavor", "Create")</p>

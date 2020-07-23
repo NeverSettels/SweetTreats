@@ -5,15 +5,24 @@
 @model SweetTreats.Models.Flavor;
 @using SweetTreats.Models;
 
-<h2>Details for: @Model.Name</h2>
+<h2>Flavor Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.FlavorName): @Html.DisplayFor(model => model.FlavorName)</h3>
 
-<ul>
-  @foreach (var join in Model.Treats)
+@if(@Model.Treats.Count == 0)
+{
+  <p>This flavor does not belong to any treat</p>
+}
+else
+{
+  <ul>
+  @foreach(var join in Model.Treats)
   {
-    <li>Treat: @Html.ActionLink($"{join.Treat.Name}", "Details", "Treats", new {id = join.Treat.TreatId})</li>
+    <li>Treat name: @join.Treat.TreatName</li>
   }
-</ul>
+  </ul>
+}
 
-@Html.ActionLink("Return to Author Index", "Index") | 
-@Html.ActionLink("Add a new Treat", "Create", "Treats") | 
-@Html.ActionLink("Return Home", "Index", "Home")
+<p class="btn btn-dark">@Html.ActionLink("Back to list", "Index")</p>
+<p class="btn btn-dark">@Html.ActionLink("Edit flavor", "Edit", new { id = Model.FlavorId })</p>
+<p class="btn btn-dark">@Html.ActionLink("Delete flavor", "Delete", new { id = Model.FlavorId })</p>

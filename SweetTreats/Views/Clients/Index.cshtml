@@ -1,0 +1,28 @@
+@{
+  Layout = "_Layout";
+}
+
+@using SweetTreats.Models;
+@using System.Security.Claims
+@model IEnumerable<SweetTreats.Models.Client>
+
+<h1>Clients at our bakery: @User.Identity.Name</h1>
+<hr />
+
+@if (Model.Any())
+{
+  <ul>
+    @foreach (Client Client in Model)
+    {
+      <li>@Html.ActionLink($"{Client.ClientName}", "Details", new { id = Client.ClientId })</li>
+    }
+  </ul>
+} 
+else
+{
+  <h3>No treats have been added your order yet!</h3>
+}
+
+<p class="btn btn-dark">@Html.ActionLink("Add new order", "Create")</p>
+
+<p class="btn btn-dark">@Html.ActionLink("Home", "Index", "Home")</p>

@@ -1,8 +1,10 @@
 @{
   Layout = "_Layout";
 }
-
-<h1>Welcome to the Library</h1>
-
-@Html.ActionLink("View all flavors", "Index", "Flavors")
-@Html.ActionLink("Create an account", "Index", "Account")
+<div class="btn-toolbar">
+  <p>@Html.ActionLink("Create a new account", "Index", "Account", null,  new { @class = "btn btn-dark btn-large menu-btn" })</p>
+  <p>@Html.ActionLink("Add an treat", "Create", "Treats", null,  new { @class = "btn btn-dark btn-large menu-btn" })</p>
+  <p>@Html.ActionLink("Add a flavor", "Create", "Flavors",  null, new { @class = "btn btn-dark btn-large menu-btn" })</p>
+  <p>@Html.ActionLink("Add a patron", "Create", "Patrons",  null, new { @class = "btn btn-dark btn-large menu-btn" })</p>
+</div>
+<br>

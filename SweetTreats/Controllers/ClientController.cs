@@ -12,12 +12,12 @@ using System.Security.Claims;
 namespace SweetTreats.Controllers
 {
   [Authorize]
-  public class PatronsController : Controller
+  public class ClientsController : Controller
   {
     private readonly SweetTreatsContext _db;
     private readonly UserManager<ApplicationUser> _userManager;
 
-    public PatronsController(UserManager<ApplicationUser> userManager, SweetTreatsContext db)
+    public ClientsController(UserManager<ApplicationUser> userManager, SweetTreatsContext db)
     {
       _userManager = userManager;
       _db = db;
@@ -27,36 +27,36 @@ namespace SweetTreats.Controllers
     {
       var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       var currentUser = await _userManager.FindByIdAsync(userId);
-      var userPatron = _db.Patrons.Where(entry => entry.User.Id == currentUser.Id);
-      return View(userPatron);
+      var userClient = _db.Clients.Where(entry => entry.User.Id == currentUser.Id);
+      return View(userClient);
     }
 
     public ActionResult Create()
     {
-      ViewBag.PatronId = new SelectList(_db.Patrons, "PatronId", "PatronName");
+      ViewBag.ClientId = new SelectList(_db.Clients, "ClientId", "ClientName");
       return View();
     }
 
     [HttpPost]
-    public async Task<ActionResult> Create(Patron patron, int FlavorId)
+    public async Task<ActionResult> Create(Client Client, int FlavorId)
     {
       var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       var currentUser = await _userManager.FindByIdAsync(userId);
-      patron.User = currentUser;
-      _db.Patrons.Add(patron);
+      Client.User = currentUser;
+      _db.Clients.Add(Client);
       if (FlavorId != 0)
       {
-        _db.Checkout.Add(new Checkout() { PatronId = patron.PatronId, FlavorId = FlavorId });
+        _db.Checkout.Add(new Checkout() { ClientId = Client.ClientId, FlavorId = FlavorId });
       }
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
   public ActionResult Details(int id)
     {
-      var thisPatron = _db.Patrons
-          .Include(patron => patron.Flavors)
+      var thisClient = _db.Clients
+          .Include(Client => Client.Flavors)
           .ThenInclude(join => join.Flavor)
-          .FirstOrDefault(patron => patron.PatronId == id);
+          .FirstOrDefault(Client => Client.PatronId == id);
       return View(thisPatron);
     }
 

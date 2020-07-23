@@ -1,0 +1,91 @@
+body{
+    background-image: url("https://image.freepik.com/free-vector/abstract-futuristic-background_23-2148399335.jpg");
+    width: auto;
+    height: auto;
+    object-fit: cover;
+    font-family: 'Noto Serif JP', serif;
+  }
+  
+  #footerRow{
+      justify-content: center;
+      font-size: smaller;
+  }
+  
+  .firstHead{
+    color: burlywood;
+  }
+  
+  .menu-btn{
+    margin-top: 40px;
+    margin-left: 100px;
+  }
+  
+  h1, h2, h3, h4 {
+    color: white;
+  }
+  
+  .container{
+      text-align: Center;
+  }
+  
+  .card{
+      background-color: rgba(245, 245, 255, 0.7);
+  
+  }
+  
+  .card1{
+    background-color: rgba(245, 245, 255, 0.7);
+    margin-left: 25%;
+  }
+  
+  .card-title{
+    margin-left: 25%;
+  }
+  
+  #new-title{
+    margin-top: 20px;
+  }
+  .footer {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background-color: grey;
+      color: white;
+      text-align: center;
+    }
+  
+    .col-md-8, offset-m-2 {
+      background-color: #e3e3e39a;
+  }
+  
+  .contact-form{
+      margin: 6em 0;
+      position: relative;
+     }
+     
+     .contact-form h1{
+      padding:2em 1px;
+      color: #F97300; 
+     }
+     .contact-form .right{
+      max-width: 600px;
+     }
+     .contact-form .right .btn-secondary{
+      background:  #F97300;
+      color: #fff;
+      border:0;
+     }
+     .contact-form .right .form-control::placeholder{
+      color: #888;
+      font-size: 16px;
+     }
+  
+     .navImg{
+      height: 50px;
+      width: 50px;
+     }
+  
+    html {
+        overflow-y: scroll;
+    }
