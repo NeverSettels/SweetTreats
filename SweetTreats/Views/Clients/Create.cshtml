@@ -1,0 +1,27 @@
+
+
+
+
+
+
+@{
+  Layout = "_Layout";
+}
+@model SweetTreats.Models.Client
+
+<h4>Add a new order for @Html.LabelFor(model => model.ClientName)</h4>
+<hr />
+
+<div class ="col-md-8 offset-md-2">
+  @using (Html.BeginForm())
+  {
+      @Html.LabelFor(model => model.ClientName)
+      @Html.TextBoxFor(model => model.ClientName, new { @class = "form-control" , required = "required"})
+      <input type="submit" value="Add new Client" class="btn btn-dark" />
+  }
+  <br>
+</div>
+
+
+<br>
+<p class="btn btn-dark">@Html.ActionLink("Show all Clients", "Index")</p>

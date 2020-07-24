@@ -1,0 +1,41 @@
+@{
+  Layout = "_Layout";
+}
+@model SweetTreats.Models.Client
+<div class="container">
+  <div class="form-header">
+    <h2>Client Order Details</h2>
+  </div>
+  <hr />
+  <div class="form-body">
+    <h3>@Html.DisplayNameFor(model => model.ClientName): @Html.DisplayFor(model => model.ClientName)</h3>
+
+    @if(@Model.Flavors.Count == 0)
+    {
+      <p>This Client does not have any orders currently.</p>
+    }
+    else
+    {
+      <h4>Current Order: </h4>
+      <ul>
+      @foreach(var join in Model.Flavors)
+      {
+        <li>@join.Flavor.FlavorName</li>
+        @using (Html.BeginForm("DeleteFlavor", "Clients"))
+        {
+          @Html.Hidden("joinId", @join.CheckoutId)
+          <input type="submit" value="Delete" class="btn btn-dark"/>
+        }
+      }
+      </ul>
+    }
+    <div class="row">
+      <div class="col-sm-12">
+        <p class="btn btn-dark">@Html.ActionLink("Back to list", "Index")</p>
+        <p class="btn btn-dark">@Html.ActionLink("Edit Name", "Edit", new { id = Model.ClientId })</p>
+        <p class="btn btn-dark">@Html.ActionLink("Delete Client", "Delete", new { id = Model.ClientId })</p>
+        <p class="btn btn-dark">@Html.ActionLink("Make Order", "AddFlavor", "Clients", new { id = Model.ClientId })</p>
+      </div>
+    </div>
+  </div>
+</div>
